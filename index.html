@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Autoformativo | Arquitectura de Software</title>
+    <script>
+        // Evitar parpadeo blanco (Flash of Unstyled Content) cargando el tema antes del render
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="index.html" class="logo">DevPath.</a>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-links" id="nav-links">
+                    <a href="index.html" class="active">Visión</a>
+                    <a href="plan.html">Plan de Estudio</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="projects.html">Proyectos</a>
+                    <button id="theme-toggle">🌙</button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section style="margin-bottom: 60px;">
+                <h1>Curso Completo de Programación<br>Nivel Tecnicatura Universitaria</h1>
+                <p style="font-size: 1.25rem; max-width: 750px; color: var(--text-primary); line-height: 1.6;">
+                    Un programa de estudios estructurado de <strong>12-18 meses</strong> diseñado para igualar
+                    (y superar) la profundidad teórica de una tecnicatura universitaria formal, combinado con
+                    la práctica intensiva de la industria moderna.
+                </p>
+                <p style="font-size: 1.05rem; max-width: 750px; color: var(--text-secondary); margin-top: 16px;">
+                    Este no es un bootcamp ni un curso introductorio. Es un <strong>currículum académico
+                        completo</strong>
+                    con materias formales, proyectos integradores y métodos de validación rigurosos.
+                </p>
+                <div style="margin-top: 24px; display: flex; gap: 16px;">
+                    <a href="plan.html" class="btn-primary">Ver Plan Completo</a>
+                    <a href="https://github.com/leonzion/devpath" class="btn-secondary">Repositorio</a>
+                </div>
+            </section>
+
+            <section>
+                <h2>Principios y alcance del curso</h2>
+
+                <div style="display: grid; grid-template-columns: 1fr; gap: 32px; margin-top: 32px;">
+                    <article>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 10px;">1. Alcance formativo</h3>
+                        <p style="margin-bottom: 0;">
+                            El plan de estudios desarrolla competencias en ingeniería de software equivalentes al ciclo
+                            troncal de una tecnicatura universitaria.
+                            Se abordan con rigor académico estructuras de datos, algoritmos, sistemas operativos, redes
+                            y arquitectura de software.
+                            El objetivo es la comprensión profunda de los sistemas computacionales, trascendiendo la
+                            mera implementación de sintaxis.
+                        </p>
+                    </article>
+
+                    <article>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 10px;">2. Nivel de exigencia</h3>
+                        <p style="margin-bottom: 0;">
+                            La metodología requiere estudio teórica activo y práctica intensiva. La evaluación es
+                            continua mediante proyectos integradores obligatorios que no admiten soluciones parciales.
+                            Se prioriza la calidad del código, la eficiencia algorítmica y la aplicación correcta de
+                            patrones de diseño por sobre la velocidad de entrega.
+                        </p>
+                    </article>
+
+                    <article>
+                        <h3 style="font-size: 1.15rem; margin-bottom: 10px;">3. Expectativas del estudiante</h3>
+                        <p style="margin-bottom: 0;">
+                            Se requiere autonomía intelectual, disciplina de estudio y capacidad de investigación.
+                            El estudiante debe habituarse a la lectura de documentación técnica oficial y al análisis de
+                            código fuente.
+                            La progresión depende exclusivamente de la validación honesta de los conocimientos
+                            adquiridos en cada etapa.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section style="margin-top: 60px;">
+                <h2>Filosofía del Programa</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div>
+                        <h3>Rigor Académico</h3>
+                        <p>Cada materia tiene objetivos claros, temario detallado, prácticas obligatorias y
+                            método de validación. No es contenido superficial ni "para principiantes".</p>
+                    </div>
+                    <div>
+                        <h3>Fundamentos sobre Frameworks</h3>
+                        <p>La tecnología cambia, los fundamentos no. Priorizamos entender cómo funciona la memoria,
+                            las redes y los algoritmos antes de aprender React o Next.js.</p>
+                    </div>
+                    <div>
+                        <h3>Teoría + Práctica</h3>
+                        <p>No solo teoría abstracta ni solo código sin fundamento. Cada concepto se acompaña de
+                            implementación práctica y proyectos integradores.</p>
+                    </div>
+                    <div>
+                        <h3>Formación Profesional</h3>
+                        <p>El objetivo es formar profesionales con criterio técnico, capaces de tomar decisiones
+                            arquitectónicas fundamentadas y resolver problemas complejos.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 DevPath Project by Leonzion. Contenido basado en Open Courseware (Harvard, MIT).</p>
+        </footer>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>

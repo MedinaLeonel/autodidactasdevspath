@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos Prácticos | DevPath</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+        })();
+    </script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <a href="index.html" class="logo">DevPath.</a>
+                <button class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-links" id="nav-links">
+                    <a href="index.html">Visión</a>
+                    <a href="plan.html">Plan de Estudio</a>
+                    <a href="roadmap.html">Roadmap</a>
+                    <a href="projects.html" class="active">Proyectos</a>
+                    <button id="theme-toggle">🌙</button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <h1>Proyectos Integradores</h1>
+            <div style="max-width: 700px; margin-bottom: 40px;">
+                <p style="font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary);">
+                    Cada materia incluye un <strong>Proyecto Integrador</strong> obligatorio. No son ejercicios de
+                    juguete:
+                    son aplicaciones completas diseñadas para resolver problemas reales y construir tu portafolio
+                    profesional.
+                </p>
+                <p style="font-size: 1rem; line-height: 1.7; color: var(--text-secondary);">
+                    Aquí se listan los hitos principales de implementación del curso.
+                </p>
+            </div>
+
+            <div id="projects-list" class="timeline" style="margin-top: 40px;">
+                <!-- Renderizado por JS -->
+                <p style="color: var(--text-secondary);">Cargando proyectos...</p>
+            </div>
+        </main>
+
+        <footer>
+            <p>© 2026 DevPath Project.</p>
+        </footer>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
