@@ -1,0 +1,654 @@
+/* 
+ * style.css
+ * Hoja de estilos principal para DevPath.
+ * 
+ * ORGANIZACIÓN:
+ * 1. Variables CSS (Design Tokens)
+ * 2. Reset & Estilos Base
+ * 3. Layout Principal (Header, Nav, Footer)
+ * 4. Componentes UI (Botones, Badges, Inputs)
+ * 5. Módulos Específicos (Accordions, Timeline)
+ * 6. Responsive Design
+ * 7. Dark Mode Overrides
+ */
+
+/* ═══════════════════════════════════════════════════════════════
+   1. VARIABLES (DESIGN TOKENS)
+   ═══════════════════════════════════════════════════════════════ */
+:root {
+    /* -- Colores Base (Modo Claro) -- */
+    --bg-color: #ffffff;
+    --bg-secondary: #fafafa;
+    /* Fondos sutiles */
+    --text-primary: #171717;
+    /* Negro suave para lectura */
+    --text-secondary: #666666;
+    /* Gris para metadatos */
+    --border-color: #eaeaea;
+
+    /* -- Colores Semánticos -- */
+    --accent-color: #0070f3;
+    /* Azul Vercel/Inter */
+    --success-color: #0d965e;
+    /* Verde éxito */
+    --warning-color: #f5a623;
+    /* Naranja alerta */
+    --danger-color: #e00;
+
+    /* -- Tipografía -- */
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    /* -- Dimensiones y Espaciado -- */
+    --container-width: 900px;
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 40px;
+
+    /* -- UI -- */
+    --radius: 6px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   2. RESET & BASE
+   ═══════════════════════════════════════════════════════════════ */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 1.75rem;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5em;
+}
+
+p {
+    margin-bottom: 1.5em;
+    color: var(--text-secondary);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+    /* Quitamos bullets por defecto para control total */
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   3. LAYOUT PRINCIPAL
+   ═══════════════════════════════════════════════════════════════ */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+header {
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-lg) 0;
+    margin-bottom: var(--spacing-xl);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    text-decoration: none !important;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Ocultar hamburguesa por defecto (Desktop) */
+.hamburger {
+    display: none;
+}
+
+footer {
+    margin-top: 80px;
+    padding: 40px 0;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   4. COMPONENTES UI
+   ═══════════════════════════════════════════════════════════════ */
+
+/* Botones */
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: var(--radius);
+    text-decoration: none !important;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    text-align: center;
+}
+
+.btn-primary {
+    background: var(--text-primary);
+    color: var(--bg-color) !important;
+}
+
+.btn-secondary {
+    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--text-primary) !important;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    opacity: 0.8;
+}
+
+/* Badges (Etiquetas) */
+.badge {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+/* Colores de Categorías (Generados dinámicamente) */
+.badge.fundamentos-matemáticos {
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+}
+
+.badge.fundamentos-computacionales {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+}
+
+.badge.herramientas-profesionales {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.badge.algoritmos-y-complejidad {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.badge.paradigmas-de-programación {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.badge.gestión-de-datos {
+    background: rgba(20, 184, 166, 0.1);
+    color: #14b8a6;
+}
+
+.badge.desarrollo-web {
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+}
+
+.badge.sistemas-y-redes {
+    background: rgba(168, 85, 247, 0.1);
+    color: #a855f7;
+}
+
+.badge.ingeniería-y-arquitectura {
+    background: rgba(236, 72, 153, 0.1);
+    color: #ec4899;
+}
+
+.badge.proyecto-final {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+
+.badge.cs50 {
+    background: rgba(164, 30, 50, 0.1);
+    color: #a41e32;
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   5. MÓDULOS ESPECÍFICOS
+   ═══════════════════════════════════════════════════════════════ */
+
+/* --- A. Accordions (Plan de Estudio) --- */
+.module-accordion {
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    margin-bottom: var(--spacing-md);
+    background: var(--bg-color);
+    overflow: hidden;
+    /* Para animaciones */
+    transition: box-shadow 0.2s;
+}
+
+.module-accordion.completed {
+    border-color: var(--success-color);
+    border-left: 4px solid var(--success-color);
+}
+
+.accordion-header {
+    padding: 20px 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-color);
+}
+
+.accordion-header:hover {
+    background-color: var(--bg-secondary);
+}
+
+.accordion-title h3 {
+    margin: 0 0 6px 0;
+    font-size: 1.15rem;
+}
+
+.module-meta {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.toggle-icon {
+    transition: transform 0.3s;
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+.module-accordion.active .toggle-icon {
+    transform: rotate(180deg);
+}
+
+/* Contenido Interno */
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    border-top: 1px solid var(--border-color);
+}
+
+.module-accordion.active .accordion-content {
+    max-height: 2000px;
+    /* Suficiente para expandir */
+    padding: 24px;
+}
+
+.module-description {
+    background: var(--bg-secondary);
+    padding: 16px;
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    border-left: 3px solid var(--accent-color);
+}
+
+.module-section {
+    margin-bottom: 24px;
+}
+
+.module-section h4 {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+/* Listas internas */
+.standard-list li,
+.resources-list li {
+    padding: 4px 0 4px 16px;
+    position: relative;
+    color: var(--text-secondary);
+}
+
+.standard-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+.syllabus-content {
+    background: var(--bg-secondary);
+    padding: 16px;
+    border-radius: 4px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+.syllabus-topic {
+    margin-top: 12px;
+    color: var(--text-primary);
+}
+
+.syllabus-topic:first-child {
+    margin-top: 0;
+}
+
+.syllabus-subtopic {
+    padding-left: 12px;
+    color: var(--text-secondary);
+}
+
+/* Proyecto Box */
+.project-section {
+    background: var(--bg-secondary);
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+}
+
+.deliverables-box {
+    margin-top: 12px;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Footer Acción */
+.module-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    margin-top: 20px;
+}
+
+.progress-check {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.mandatory-badge {
+    font-size: 0.75rem;
+    color: var(--danger-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.optional-badge {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+/* --- B. Timeline (Roadmap & Projects) --- */
+.timeline {
+    border-left: 2px solid var(--border-color);
+    margin-left: 20px;
+    padding-left: 30px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    background: var(--bg-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 24px;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -39px;
+    /* Ajuste para alinear con la barra */
+    top: 30px;
+    width: 14px;
+    height: 14px;
+    background: var(--bg-color);
+    border: 3px solid var(--accent-color);
+    border-radius: 50%;
+}
+
+.phase-header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.phase-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 12px;
+}
+
+.roadmap-module-item {
+    display: flex;
+    gap: 12px;
+    padding: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.roadmap-module-item.completed .status-icon {
+    filter: grayscale(0);
+}
+
+.status-icon {
+    filter: grayscale(1);
+    opacity: 0.5;
+}
+
+.parallel-tip {
+    margin-top: 16px;
+    padding: 12px;
+    background: rgba(0, 112, 243, 0.05);
+    /* Blue tint */
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.milestone-box {
+    margin-top: 16px;
+    padding: 12px;
+    background: rgba(245, 166, 35, 0.1);
+    /* Orange tint */
+    border-radius: 4px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+/* --- C. Tablas (Comparison) --- */
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    font-size: 0.95rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+}
+
+.comparison-table th {
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   6. RESPONSIVE (MOBILE)
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        z-index: 200;
+        /* Asegurar que esté sobre el menú abierto */
+    }
+
+    .hamburger span {
+        width: 24px;
+        height: 2px;
+        background: var(--text-primary);
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 75%;
+        background: var(--bg-color);
+        border-left: 1px solid var(--border-color);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px 24px;
+        transition: right 0.3s;
+        z-index: 100;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .timeline {
+        margin-left: 10px;
+        padding-left: 20px;
+    }
+
+    .timeline-item::before {
+        left: -29px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   7. DARK MODE OVERRIDES
+   ═══════════════════════════════════════════════════════════════ */
+[data-theme="dark"] {
+    --bg-color: #111111;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #ededed;
+    --text-secondary: #a0a0a0;
+    --border-color: #333333;
+    --accent-color: #3291ff;
+}
+
+/* Ajustes específicos de contraste para Dark Mode */
+[data-theme="dark"] .badge {
+    filter: saturate(1.5);
+}
+
+/* Colores más vivos */
+[data-theme="dark"] .badge.cs50 {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.1);
+}
+
+[data-theme="dark"] .parallel-tip {
+    background: rgba(50, 145, 255, 0.1);
+}
+
+[data-theme="dark"] .deliverables-box {
+    background: rgba(255, 255, 255, 0.05);
+}
